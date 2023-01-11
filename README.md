@@ -6,7 +6,6 @@
 ## Requirements
 
 * Python
-* If your Python version lower than 3.3 (check with `python --version`), you'll need to install the venv module (`pipx install virtualenv`)
 * git (only to clone this repository)
 * PostgreSQL
 
@@ -17,20 +16,21 @@
 ```
 git clone https://github.com/CodecoolGlobal/proman-2-python-RRicsi89.git
 ```
+
 ##### create a local PostgreSQL database for this project to use e.g. :
 ```
 createdb proman
 ```
-##### create a .env file
+##### step into the project folder
 ```
-touch .env
+cd proman-2-python-RRicsi89
 ```
-##### copy the .env.template file's content to the newly created .env file and fill it with the corresponding data (the HOST most probably will be localhost)
+##### fill the .env file with the corresponding data (the HOST most probably will be localhost)
 ```
 MY_PSQL_DBNAME=
 MY_PSQL_USER=
-MY_PSQL_HOST=
 MY_PSQL_PASSWORD=
+MY_PSQL_HOST=
 ```
 ##### start psql in a terminal at the data folder of the project:
 ```
@@ -46,9 +46,10 @@ $ psql
 ```
 \i proman_sample_data.sql
 ```
-##### quit from postgres shell:
+##### quit from postgres shell and step back to the project root folder:
 ```
-\q
+$ \q
+$ cd ..
 ```
 ##### create virtual environment:
 ```
@@ -63,7 +64,12 @@ virtualenv venv
 (venv) pip install -r requirements.txt
 ```
 
-Note for Python 3.4 users: replace virtualenv with pyvenv.
+##### if the requirements.txt install fails building wheel for psycopg2 this should fix it:
+```
+$ sudo apt-get install libpq-dev
+(venv) $ pip install -r requirements.txt
+```
+
 Note for Microsoft Windows users: replace the virtual environment activation command above with venv\Scripts\activate.
 
 #### Run the program: 
